@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petal Test · Documentação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFC107;  /* Amarelo principal */
+            --primary-dark: #FFA000;
+            --primary-light: #FFECB3;
+            --secondary: #5D4037;  /* Marrom para contraste */
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --gray-700: #616161;
+            --gray-900: #212121;
+            --black: #000000;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--white);
+            border-right: 1px solid var(--gray-200);
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-logo {
+            width: 30px;
+            height: 30px;
+            position: relative;
+        }
+
+        .logo-center {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .logo-petal {
+            position: absolute;
+            width: 6px;
+            height: 12px;
+            background: var(--white);
+            border-radius: 6px 6px 0 0;
+            transform-origin: bottom center;
+            border: 1px solid var(--primary-light);
+            z-index: 1;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .sidebar-title span {
+            color: var(--primary-dark);
+        }
+
+        .sidebar-nav {
+            padding: 1rem 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-section h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--gray-700);
+            padding: 0.5rem 1.5rem;
+            margin: 0;
+        }
+
+        .sidebar-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-links a {
+            display: block;
+            padding: 0.6rem 1.5rem;
+            color: var(--gray-900);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-links a:hover {
+            background-color: var(--gray-50);
+            color: var(--primary-dark);
+        }
+
+        .sidebar-links a.active {
+            border-left-color: var(--primary);
+            background-color: var(--primary-light);
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 3rem;
+            max-width: 900px;
+        }
+
+        .doc-header {
+            margin-bottom: 2rem;
+        }
+
+        .doc-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .doc-header p {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+            max-width: 700px;
+        }
+
+        /* Documentation Sections */
+        .doc-section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 20px;
+        }
+
+        .doc-section h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .doc-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .annotation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .annotation-table th, .annotation-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+            vertical-align: top;
+        }
+
+        .annotation-table th {
+            background-color: var(--gray-50);
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .annotation-name {
+            font-family: 'SF Mono', 'Roboto Mono', monospace;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background-color: #1E1E1E;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background-color: #252526;
+            border-bottom: 1px solid #333;
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 6px;
+            margin-right: 1rem;
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-dot.red {
+            background-color: #FF5F56;
+        }
+
+        .code-dot.yellow {
+            background-color: #FFBD2E;
+        }
+
+        .code-dot.green {
+            background-color: #27C93F;
+        }
+
+        .code-filename {
+            font-family: 'SF Mono', 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--gray-200);
+        }
+
+        .code-content {
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'SF Mono', 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #D4D4D4;
+        }
+
+        .token.annotation {
+            color: #4EC9B0;
+        }
+        .token.keyword {
+            color: #569CD6;
+        }
+        .token.function {
+            color: #DCDCAA;
+        }
+        .token.string {
+            color: #CE9178;
+        }
+        .token.number {
+            color: #B5CEA8;
+        }
+        .token.comment {
+            color: #6A9955;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none; /* Mobile menu would go here */
+            }
+            
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo" id="sidebar-logo">
+                <div class="logo-center"></div>
+                <!-- Petals added by JS -->
+            </div>
+            <div class="sidebar-title">Petal<span>Test</span></div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <div class="sidebar-section">
+                <h3>Introdução</h3>
+                <ul class="sidebar-links">
+                    <li><a href="#getting-started" class="active">Começando</a></li>
+                    <li><a href="#installation">Instalação</a></li>
+                    <li><a href="#configuration">Configuração</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Anotações</h3>
+                <ul class="sidebar-links">
+                    <li><a href="#annotations-overview">Visão Geral</a></li>
+                    <li><a href="#test-annotation">@Test</a></li>
+                    <li><a href="#beforeeach-annotation">@BeforeEach</a></li>
+                    <li><a href="#aftereach-annotation">@AfterEach</a></li>
+                    <li><a href="#classtestable-annotation">@ClassTestable</a></li>
+                    <li><a href="#repeatedtest-annotation">@RepeatedTest</a></li>
+                    <li><a href="#parametrizedtest-annotation">@ParameterizedTest</a></li>
+                    <li><a href="#displayname-annotation">@DisplayName</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Asserções</h3>
+                <ul class="sidebar-links">
+                    <li><a href="#assertions-overview">Visão Geral</a></li>
+                    <li><a href="#basic-assertions">Asserções Básicas</a></li>
+                    <li><a href="#collection-assertions">Coleções</a></li>
+                    <li><a href="#exception-assertions">Exceções</a></li>
+                    <li><a href="#async-assertions">Assíncrono</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Guias</h3>
+                <ul class="sidebar-links">
+                    <li><a href="#testing-oo">Testes OO</a></li>
+                    <li><a href="#testing-flutter">Testes Flutter</a></li>
+                    <li><a href="#mocking">Mocking</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="doc-header">
+            <h1>Anotações e Asserções</h1>
+            <p>Domine a API do Petal Test com este guia completo de anotações para controle de testes e asserções para verificação de resultados.</p>
+        </header>
+        
+        <!-- Annotations Section -->
+        <section id="annotations-overview" class="doc-section">
+            <h2>Anotações</h2>
+            <p>As anotações permitem configurar o comportamento dos seus testes e controlar o ciclo de vida da execução.</p>
+            
+            <table class="annotation-table">
+                <thead>
+                    <tr>
+                        <th>Anotação</th>
+                        <th>Descrição</th>
+                        <th>Exemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="annotation-name">@ClassTestable()</span></td>
+                        <td>Marca uma classe como contendo métodos de teste</td>
+                        <td><code>@ClassTestable() class MeusTestes { ... }</code></td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@Test()</span></td>
+                        <td>Marca um método como um teste</td>
+                        <td><code>@Test() void testeExemplo() { ... }</code></td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@BeforeEach()</span></td>
+                        <td>Executado antes de cada método de teste</td>
+                        <td><code>@BeforeEach() void setUp() { ... }</code></td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@AfterEach()</span></td>
+                        <td>Executado após cada método de teste</td>
+                        <td><code>@AfterEach() void tearDown() { ... }</code></td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@RepeatedTest(value: n)</span></td>
+                        <td>Executa o teste 'n' vezes</td>
+                        <td><code>@RepeatedTest(value: 3) void teste() { ... }</code></td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@ParameterizedTest()</span></td>
+                        <td>Marca um teste como parametrizado</td>
+                        <td><code>@ParameterizedTest() @ValueSource(...) void teste() { ... }</code></td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@DisplayName(displayName: "texto")</span></td>
+                        <td>Define um nome amigável para o teste</td>
+                        <td><code>@DisplayName(displayName: "Teste de login")</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Example Section -->
+        <section id="annotations-example" class="doc-section">
+            <h3>Exemplo Completo</h3>
+            <p>Veja como usar várias anotações juntas em uma classe de teste:</p>
+            
+            <div class="code-block">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <div class="code-dot red"></div>
+                        <div class="code-dot yellow"></div>
+                        <div class="code-dot green"></div>
+                    </div>
+                    <div class="code-filename">user_service_test.dart</div>
+                </div>
+                <div class="code-content">
+                    <pre><code><span class="token annotation">@ClassTestable</span><span class="token punctuation">()</span>
+<span class="token keyword">class</span> <span class="token class-name">UserServiceTest</span> <span class="token punctuation">{</span>
+  <span class="token keyword">late</span> UserService userService<span class="token punctuation">;</span>
+  
+  <span class="token annotation">@BeforeEach</span><span class="token punctuation">()</span>
+  <span class="token keyword">void</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    userService <span class="token operator">=</span> <span class="token function">UserService</span><span class="token punctuation">(</span><span class="token function">MockUserRepository</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token annotation">@Test</span><span class="token punctuation">()</span>
+  <span class="token annotation">@DisplayName</span><span class="token punctuation">(</span>displayName<span class="token punctuation">:</span> <span class="token string">"Cria usuário com email válido"</span><span class="token punctuation">)</span>
+  <span class="token keyword">void</span> <span class="token function">testCreateUser_validEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> user <span class="token operator">=</span> userService<span class="token punctuation">.</span><span class="token function">createUser</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>email<span class="token punctuation">,</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token annotation">@RepeatedTest</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span>
+  <span class="token keyword">void</span> <span class="token function">testCreateUser_randomEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> email <span class="token operator">=</span> <span class="token string">'test<span class="token interpolation"><span class="token punctuation">${</span><span class="token function">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>@example.com'</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> user <span class="token operator">=</span> userService<span class="token punctuation">.</span><span class="token function">createUser</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>email<span class="token punctuation">,</span> <span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">'@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token annotation">@AfterEach</span><span class="token punctuation">()</span>
+  <span class="token keyword">void</span> <span class="token function">tearDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    userService<span class="token punctuation">.</span><span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Assertions Section -->
+        <section id="assertions-overview" class="doc-section">
+            <h2>Asserções</h2>
+            <p>O Petal Test fornece uma variedade de asserções para verificar seus resultados:</p>
+            
+            <h3>Asserções Básicas</h3>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code><span class="token comment">// Igualdade</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">equals</span><span class="token punctuation">(</span>expected<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isNot</span><span class="token punctuation">(</span>unexpected<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Booleanos</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isTrue</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isFalse</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isNull</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isNotNull</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Números</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">greaterThan</span><span class="token punctuation">(</span>min<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">lessThan</span><span class="token punctuation">(</span>max<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">inRange</span><span class="token punctuation">(</span>min<span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+                </div>
+            </div>
+            
+            <h3>Asserções para Coleções</h3>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code><span class="token function">expect</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token function">contains</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token function">hasLength</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> <span class="token function">containsValue</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token function">isNotEmpty</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+
+        document.querySelectorAll('.sidebar-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.sidebar-links a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Scroll to section
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
