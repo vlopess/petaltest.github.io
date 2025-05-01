@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petal Test · Framework de Testes para Dart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    .hero img {
+        height: 150%;
+    }
+
+    .features-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+</style>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="./index.html" class="logo">
+            <img src="./images/icon-logo.svg" alt="logo" height="40px"/>
+            <div class="logo-text">Petal<span>Blog</span></div>
+        </a>
+        <div class="nav-links">
+            <a href="./doc.html">Documentação</a>
+            <a href="./blog.html">Blog</a>
+            <a href="#Idiom">Idioma</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="./images/daisy.svg" alt="logo"/>
+        <div class="hero-content">
+            <h1>Petal<span>Blog</span></h1>
+            <p>
+              Petal Test é um framework de testes e esse é o seu blog.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">        
+        <div class="features-column">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Recursos</h3>
+                <p>Testes orientados a objetos, anotações configuráveis e asserts de alto nível.</p>
+                <p>12/05/2025</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Relatórios</h3>
+                <p>Saídas coloridas e formatadas que destacam o que realmente importa.</p>
+                <p>12/05/2025</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>CLI</h3>
+                <p>Teste por classe ou grupos, tudo pelo terminal.</p>
+                <p>12/05/2025</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Test Smells</h3>
+                <p>Deteção de violação de boas práticas de implementação de testes.</p>
+                <p>12/05/2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon" id="footer-logo-icon">
+                      <img src="./images/icon-logo.svg" alt="logo" height="40px"/>
+                    </div>
+                    <div class="footer-logo-text">Petal<span>Test</span></div>
+                </div>
+                <p class="footer-description">
+                    Um framework de testes elegante para Dart, projetado para tornar a escrita de testes uma experiência agradável e produtiva.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Documentação</h3>
+                <ul>
+                    <li><a href="./doc.html#getting-started">Getting Started</a></li>
+                    <li><a href="./doc.html#annotations">Annotations</a></li>
+                    <li><a href="./doc.html#asserts">Asserts</a></li>
+                    <li><a href="./doc.html#cli">CLI Commands</a></li>
+                    <li><a href="./doc.html#reports">Reports</a></li>
+                    <li><a href="./doc.html#bdd">BDD</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Comunidade</h3>
+                <ul>
+                    <li><a href="https://github.com/vlopess/Petal-Test" target="_blank">Contribuindo</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="./store.html">Produtos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2025 Petal Test. Open Source.</div>
+            <div>Feito com ❤️ para comunidade Dart</div>
+        </div>
+    </footer>
+</body>
+</html>

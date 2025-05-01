@@ -7,594 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #FFD43B;  /* Amarelo principal */
-            --primary-dark: #FFD43B;
-            --primary-light: #FFECB3;
-            --secondary: #5D4037;  /* Marrom para contraste */
-            --white: #FFFFFF;
-            --gray-50: #FAFAFA;
-            --gray-100: #F5F5F5;
-            --gray-200: #EEEEEE;
-            --gray-700: #616161;
-            --gray-900: #212121;
-            --black: #000000;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--gray-900);
-            line-height: 1.6;
-            background-color: var(--white);
-        }
-
-        /* Header */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            background-color: var(--white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            position: relative;
-        }
-
-        .logo-icon-center {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: var(--primary);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        .logo-icon-petal {
-            position: absolute;
-            width: 8px;
-            height: 16px;
-            background: var(--white);
-            border-radius: 8px 8px 0 0;
-            transform-origin: bottom center;
-            border: 1px solid var(--gray-200);
-            z-index: 1;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary);
-            letter-spacing: -0.5px;
-        }
-
-        .logo-text span {
-            color: var(--primary-dark);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--gray-700);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-dark);
-        }
-
-        .nav-links a.active {
-            color: var(--primary-dark);
-            font-weight: 600;
-        }
-
-        .nav-links a.active:after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--primary);
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--primary);
-            color: var(--secondary);
-            padding: 0.65rem 1.25rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-            box-shadow: var(--shadow-sm);
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .cta-button.secondary {
-            background-color: var(--white);
-            border: 1px solid var(--gray-200);
-            color: var(--gray-900);
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 6rem 2rem 4rem;
-            background: linear-gradient(135deg, var(--primary-light), var(--white));
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero img {
-          position: absolute;
-          left: -60px;
-          bottom: -100px;
-          height: 115%;
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-            opacity: 0.15;
-            z-index: 0;
-        }
-
-        .hero:after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .hero-content {
-            max-width: 600px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-        }
-
-        .hero h1 span {
-            color: var(--primary-dark);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--gray-700);
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-
-        .version-badge {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 0.35rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .version-badge span {
-            margin-left: 0.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        /* Features Section */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-
-        .section-title p {
-            color: var(--gray-700);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid var(--gray-100);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background-color: var(--primary-light);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-            font-size: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-
-        .feature-card p {
-            color: var(--gray-700);
-            font-size: 0.95rem;
-        }
-
-        /* Code Section */
-        .code-section {
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 5rem 2rem;
-            position: relative;
-        }
-
-        .code-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .code-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            max-width: 700px;
-        }
-
-        .code-title h2 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .code-title p {
-            opacity: 0.9;
-        }
-
-        .code-block {
-            width: 100%;
-            max-width: 800px;
-            background-color: #1E1E1E;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .code-header {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            background-color: #252526;
-            border-bottom: 1px solid #333;
-        }
-
-        .code-dots {
-            display: flex;
-            gap: 6px;
-            margin-right: 1rem;
-        }
-
-        .code-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .code-dot.red {
-            background-color: #FF5F56;
-        }
-
-        .code-dot.yellow {
-            background-color: #FFBD2E;
-        }
-
-        .code-dot.green {
-            background-color: #27C93F;
-        }
-
-        .code-filename {
-            font-family: 'Inter', monospace;
-            font-size: 0.85rem;
-            color: var(--gray-200);
-        }
-
-        .code-content {
-            padding: 1.5rem;
-            overflow-x: auto;
-        }
-
-        pre {
-            margin: 0;
-            font-family: 'SF Mono', 'Roboto Mono', monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #D4D4D4;
-        }
-
-        .token.comment {
-            color: #6A9955;
-        }
-        .token.keyword {
-            color: #569CD6;
-        }
-        .token.function {
-            color: #DCDCAA;
-        }
-        .token.string {
-            color: #CE9178;
-        }
-        .token.number {
-            color: #B5CEA8;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-logo-icon {
-            width: 30px;
-            height: 30px;
-            position: relative;
-        }
-
-        .footer-logo-center {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: var(--primary);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        .footer-logo-petal {
-            position: absolute;
-            width: 6px;
-            height: 12px;
-            background: var(--white);
-            border-radius: 6px 6px 0 0;
-            transform-origin: bottom center;
-            z-index: 1;
-        }
-
-        .footer-logo-text {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .footer-logo-text span {
-            color: var(--primary);
-        }
-
-        .footer-description {
-            opacity: 0.8;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .footer-social a {
-            color: var(--white);
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
-
-        .footer-social a:hover {
-            opacity: 1;
-        }
-
-        .footer-links h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-            color: var(--primary);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: var(--white);
-            opacity: 0.8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: opacity 0.2s;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            opacity: 0.7;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-          .hero img {
-              height: 70%;
-          }
-        }
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 1.5rem;
-                padding: 1.5rem 1rem;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .button-group {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .section-title h2 {
-                font-size: 1.75rem;
-            }          
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -605,7 +18,7 @@
         </a>
         <div class="nav-links">
             <a href="./doc.html">Documentação</a>
-            <a href="#blog">Blog</a>
+            <a href="./blog.html">Blog</a>
             <a href="#Idiom">Idioma</a>
         </div>
     </nav>
@@ -621,7 +34,7 @@
               de testes uma experiência agradável.
             </p>
             <div class="button-group">
-                <a href="#get-started" class="cta-button">Get Started</a>
+                <a href="./doc.html" class="cta-button">Get Started</a>
             </div>
         </div>
     </section>
@@ -633,18 +46,13 @@
         </div>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3>Inovador</h3>
-                <p>Ferramentas de teste robustas e extensíveis.</p>
-            </div>
-            <div class="feature-card">
                 <div class="feature-icon">🎯</div>
                 <h3>Recursos</h3>
                 <p>Testes orientados a objetos, anotações configuráveis e asserts de alto nível.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📊</div>
-                <h3>Relatórios Bonitos</h3>
+                <h3>Relatórios</h3>
                 <p>Saídas coloridas e formatadas que destacam o que realmente importa.</p>
             </div>
             <div class="feature-card">
@@ -663,10 +71,6 @@
     <!-- Code Section -->
     <section class="code-section">
         <div class="code-container">
-            <div class="code-title">
-                <h2>Escreva testes como poesia</h2>
-                <p>Uma API expressiva que faz seus testes serem tão claros quanto sua documentação</p>
-            </div>
             <div class="code-block">
                 <div class="code-header">
                     <div class="code-dots">
@@ -674,37 +78,39 @@
                         <div class="code-dot yellow"></div>
                         <div class="code-dot green"></div>
                     </div>
-                    <div class="code-filename">user_test.dart</div>
+                    <div class="code-filename">user_service_test.dart</div>
                 </div>
                 <div class="code-content">
-                    <pre><code><span class="token keyword">import</span> <span class="token string">'package:petal_test/petal_test.dart'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token string">'package:my_app/user.dart'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">group</span><span class="token punctuation">(</span><span class="token string">'User Authentication'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">final</span> testUser <span class="token operator">=</span> <span class="token function">User</span><span class="token punctuation">(</span>
-      email<span class="token punctuation">:</span> <span class="token string">'test@example.com'</span><span class="token punctuation">,</span>
-      password<span class="token punctuation">:</span> <span class="token string">'secure123'</span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should authenticate with valid credentials'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token function">expect</span><span class="token punctuation">(</span>
-        testUser<span class="token punctuation">.</span><span class="token function">authenticate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token function">completesWith</span><span class="token punctuation">(</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-      <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should fail with invalid password'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      testUser<span class="token punctuation">.</span>password <span class="token operator">=</span> <span class="token string">'wrong'</span><span class="token punctuation">;</span>
-      <span class="token function">expect</span><span class="token punctuation">(</span>
-        testUser<span class="token punctuation">.</span><span class="token function">authenticate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token function">throwsA</span><span class="token punctuation">(</span><span class="token function">isA</span><span class="token punctuation">&lt;</span>AuthException<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-      <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <pre><code><span class="token annotation">@ClassTestable</span><span class="token punctuation">()</span>
+<span class="token keyword">class</span> <span class="token class-name">UserServiceTest</span> <span class="token punctuation">{</span>
+  <span class="token keyword">late</span> UserService userService<span class="token punctuation">;</span>
+  
+  <span class="token annotation">@BeforeEach</span><span class="token punctuation">()</span>
+  <span class="token keyword">void</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    userService <span class="token operator">=</span> <span class="token function">UserService</span><span class="token punctuation">(</span><span class="token function">MockUserRepository</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token annotation">@Test</span><span class="token punctuation">()</span>
+  <span class="token annotation">@DisplayName</span><span class="token punctuation">(</span>displayName<span class="token punctuation">:</span> <span class="token string">"Cria usuário com email válido"</span><span class="token punctuation">)</span>
+  <span class="token keyword">void</span> <span class="token function">testCreateUser_validEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> user <span class="token operator">=</span> userService<span class="token punctuation">.</span><span class="token function">createUser</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>email<span class="token punctuation">,</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token annotation">@RepeatedTest</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span>
+  <span class="token keyword">void</span> <span class="token function">testCreateUser_randomEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> email <span class="token operator">=</span> <span class="token string">'test<span class="token interpolation"><span class="token punctuation">${</span><span class="token function">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>@example.com'</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> user <span class="token operator">=</span> userService<span class="token punctuation">.</span><span class="token function">createUser</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>email<span class="token punctuation">,</span> <span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">'@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token annotation">@AfterEach</span><span class="token punctuation">()</span>
+  <span class="token keyword">void</span> <span class="token function">tearDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    userService<span class="token punctuation">.</span><span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
                 </div>
-            </div>
+            </div>            
         </div>
     </section>
 
@@ -725,26 +131,26 @@
             <div class="footer-links">
                 <h3>Documentação</h3>
                 <ul>
-                    <li><a href="#">Getting Started</a></li>
-                    <li><a href="#">Annotations</a></li>
-                    <li><a href="#">Asserts</a></li>
-                    <li><a href="#">CLI Commands</a></li>
-                    <li><a href="#">Reports</a></li>
+                    <li><a href="./doc.html#getting-started">Getting Started</a></li>
+                    <li><a href="./doc.html#annotations">Annotations</a></li>
+                    <li><a href="./doc.html#asserts">Asserts</a></li>
+                    <li><a href="./doc.html#cli">CLI Commands</a></li>
+                    <li><a href="./doc.html#reports">Reports</a></li>
+                    <li><a href="./doc.html#bdd">BDD</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h3>Comunidade</h3>
                 <ul>
-                    <li><a href="#">Código de Conduta</a></li>
-                    <li><a href="#">Contribuindo</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Produtos</a></li>
+                    <li><a href="https://github.com/vlopess/Petal-Test" target="_blank">Contribuindo</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="./store.html">Produtos</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <div>© 2023 Petal Test. Todos os direitos reservados.</div>
-            <div>Feito com ❤️ pela comunidade Dart</div>
+            <div>© 2025 Petal Test. Open source.</div>
+            <div>Feito com ❤️ para comunidade Dart</div>
         </div>
     </footer>
 </body>

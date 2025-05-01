@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #FFC107;  /* Amarelo principal */
-            --primary-dark: #FFA000;
+            --primary: #FFD43B;  /* Amarelo principal */
+            --primary-dark: #FFD43B;
             --primary-light: #FFECB3;
             --secondary: #5D4037;  /* Marrom para contraste */
             --white: #FFFFFF;
@@ -140,6 +140,7 @@
         .main-content {
             padding: 2rem 3rem;
             max-width: 900px;
+            margin: auto;
         }
 
         .doc-header {
@@ -174,8 +175,8 @@
             border-bottom: 1px solid var(--gray-200);
         }
 
-        .doc-section h3 {
-            font-size: 1.3rem;
+        .doc-section h1 {
+            font-size: 2.5rem;
             font-weight: 600;
             color: var(--secondary);
             margin: 1.5rem 0 1rem;
@@ -202,7 +203,7 @@
 
         .annotation-name {
             font-family: 'SF Mono', 'Roboto Mono', monospace;
-            color: var(--primary-dark);
+            color: var(--secondary);
             font-weight: 500;
         }
 
@@ -285,6 +286,11 @@
             color: #6A9955;
         }
 
+
+        .sidebar-section h3 {
+            color: var(--primary);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             body {
@@ -299,75 +305,108 @@
                 padding: 1.5rem;
             }
         }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            position: relative;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--primary-dark);
+        }
+
+        .code {
+            color: var(--secondary);
+        }
+
     </style>
 </head>
 <body>
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
         <div class="sidebar-header">
-            <div class="sidebar-logo" id="sidebar-logo">
-                <div class="logo-center"></div>
-                <!-- Petals added by JS -->
-            </div>
-            <div class="sidebar-title">Petal<span>Test</span></div>
+            <a href="./index.html" class="logo">
+                <img src="./images/icon-logo.svg" alt="logo" />
+                <div class="logo-text">Petal<span>Test</span></div>
+            </a>      
         </div>
         
         <nav class="sidebar-nav">
             <div class="sidebar-section">
-                <h3>Introdução</h3>
+                <h3>Introduction</h3>
                 <ul class="sidebar-links">
-                    <li><a href="#getting-started" class="active">Começando</a></li>
-                    <li><a href="#installation">Instalação</a></li>
-                    <li><a href="#configuration">Configuração</a></li>
+                    <li><a href="#getting-started" class="active">Getting Started</a></li>
+                    <li><a href="#annotations">Annotations</a></li>
+                    <li><a href="#asserts">Asserts</a></li>
+                    <li><a href="#cli">CLI Commands</a></li>
+                    <li><a href="#reports">Reports</a></li>
+                    <li><a href="#bdd">BDD</a></li>
                 </ul>
             </div>
             
             <div class="sidebar-section">
-                <h3>Anotações</h3>
+                <h3>Guides</h3>
                 <ul class="sidebar-links">
-                    <li><a href="#annotations-overview">Visão Geral</a></li>
-                    <li><a href="#test-annotation">@Test</a></li>
-                    <li><a href="#beforeeach-annotation">@BeforeEach</a></li>
-                    <li><a href="#aftereach-annotation">@AfterEach</a></li>
-                    <li><a href="#classtestable-annotation">@ClassTestable</a></li>
-                    <li><a href="#repeatedtest-annotation">@RepeatedTest</a></li>
-                    <li><a href="#parametrizedtest-annotation">@ParameterizedTest</a></li>
-                    <li><a href="#displayname-annotation">@DisplayName</a></li>
                 </ul>
             </div>
             
             <div class="sidebar-section">
-                <h3>Asserções</h3>
+                <h3>About Framework</h3>
                 <ul class="sidebar-links">
-                    <li><a href="#assertions-overview">Visão Geral</a></li>
-                    <li><a href="#basic-assertions">Asserções Básicas</a></li>
-                    <li><a href="#collection-assertions">Coleções</a></li>
-                    <li><a href="#exception-assertions">Exceções</a></li>
-                    <li><a href="#async-assertions">Assíncrono</a></li>
                 </ul>
             </div>
-            
-            <div class="sidebar-section">
-                <h3>Guias</h3>
-                <ul class="sidebar-links">
-                    <li><a href="#testing-oo">Testes OO</a></li>
-                    <li><a href="#testing-flutter">Testes Flutter</a></li>
-                    <li><a href="#mocking">Mocking</a></li>
-                </ul>
+    
             </div>
         </nav>
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" id="getting-started">
         <header class="doc-header">
-            <h1>Anotações e Asserções</h1>
-            <p>Domine a API do Petal Test com este guia completo de anotações para controle de testes e asserções para verificação de resultados.</p>
+            <h1>✨Getting Started</h1>
+            <p>Install Petal Test, running this command:</p>
         </header>
-        
+        <section>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code><span class="token">$ flutter pub add petal_test</span></code></pre>
+                </div>
+            </div>
+            <p>This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):</p>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code><span class="token">dependencies:  
+    petal_test: ^1.0.0</span></code></pre>
+                </div>
+            </div>
+            <p>Alternatively, your editor might support flutter pub get. Check the docs for your editor to learn more.</p>
+            <h3>Import it</h3>
+            <p>Now in your Dart code, you can use:</p>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code><span class="token">import 'package:petal_test/petal_test.dart';</span></code></pre>
+                </div>
+            </div>
+        </section>
+
         <!-- Annotations Section -->
-        <section id="annotations-overview" class="doc-section">
-            <h2>Anotações</h2>
+        <section id="annotations" class="doc-section">            
+            <h1>✍️ Annotations</h1>
             <p>As anotações permitem configurar o comportamento dos seus testes e controlar o ciclo de vida da execução.</p>
             
             <table class="annotation-table">
@@ -380,125 +419,221 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="annotation-name">@ClassTestable()</span></td>
-                        <td>Marca uma classe como contendo métodos de teste</td>
-                        <td><code>@ClassTestable() class MeusTestes { ... }</code></td>
-                    </tr>
-                    <tr>
                         <td><span class="annotation-name">@Test()</span></td>
                         <td>Marca um método como um teste</td>
-                        <td><code>@Test() void testeExemplo() { ... }</code></td>
+                        <td>
+                            <pre><code class="code">@Test()
+void test1() { 
+    print('Eu sou o teste 1'); 
+}</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@DisplayName(displayName: string)</span></td>
+                        <td>Define um nome amigável para o teste</td>
+                        <td>
+                            <pre><code class="code">@Test()
+@DisplayName(displayName: "Teste de login")
+void test1() { 
+    //code
+}</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@ClassTestable()</span></td>
+                        <td>Marca uma classe como um testável</td>
+                        <td>
+                            <pre><code class="code">@ClassTestable()
+class UserService {
+    // métodos
+}</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@Only()</span></td>
+                        <td>Limita a execução apenas aos testes marcados com @Only, ignorando todos os demais.</td>
+                        <td>
+                            <pre><code class="code">@Test()
+@Only()
+void test() {
+    ... 
+}</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@Disabled()</span></td>
+                        <td>Ignora o teste marcado.</td>
+                        <td>
+                            <pre><code class="code">@Test()
+@Disabled()
+void test() {
+    ... 
+}</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@RepeatedTest(value: int)</span></td>
+                        <td>Executa o teste repetidamente pelo número especificado.</td>
+                        <td>
+                            <pre><code class="code">@RepeatedTest(value: 3)
+void test() {
+    ... 
+}</code></pre>
+                        </td>
                     </tr>
                     <tr>
                         <td><span class="annotation-name">@BeforeEach()</span></td>
                         <td>Executado antes de cada método de teste</td>
-                        <td><code>@BeforeEach() void setUp() { ... }</code></td>
+                        <td>
+                            <pre><code class="code">@BeforeEach()
+void setUp() {
+    ... 
+}</code></pre>
+                        </td>
                     </tr>
                     <tr>
                         <td><span class="annotation-name">@AfterEach()</span></td>
                         <td>Executado após cada método de teste</td>
-                        <td><code>@AfterEach() void tearDown() { ... }</code></td>
+                        <td>
+                            <pre><code class="code">@AfterEach()
+void tearDown() {
+    ... 
+}</code></pre>
+                        </td>
                     </tr>
                     <tr>
-                        <td><span class="annotation-name">@RepeatedTest(value: n)</span></td>
-                        <td>Executa o teste 'n' vezes</td>
-                        <td><code>@RepeatedTest(value: 3) void teste() { ... }</code></td>
+                        <td><span class="annotation-name">@BeforeAll()</span></td>
+                        <td>Executa um único método antes de todos os testes da classe.</td>
+                        <td>
+                            <pre><code class="code">@BeforeAll()
+void test() {
+    ... 
+}</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="annotation-name">@AfterAll()</span></td>
+                        <td>Executa um único método após todos os testes da classe.</td>
+                        <td>
+                            <pre><code class="code">@AfterAll()
+void test() {
+    ... 
+}</code></pre>
+                        </td>
                     </tr>
                     <tr>
                         <td><span class="annotation-name">@ParameterizedTest()</span></td>
                         <td>Marca um teste como parametrizado</td>
-                        <td><code>@ParameterizedTest() @ValueSource(...) void teste() { ... }</code></td>
+                        <td>
+                            <pre><code class="code">@ParameterizedTest()
+@ValueSource.int([...])
+void test() {
+    ... 
+}</code></pre>
+                        </td>
                     </tr>
                     <tr>
-                        <td><span class="annotation-name">@DisplayName(displayName: "texto")</span></td>
-                        <td>Define um nome amigável para o teste</td>
-                        <td><code>@DisplayName(displayName: "Teste de login")</code></td>
+                        <td><span class="annotation-name">@ValueSource()</span></td>
+                        <td>Fornece uma lista de valores para um @ParameterizedTest.</td>
+                        <td>
+                            <pre><code class="code">@ParameterizedTest()
+@ValueSource.int([...])
+void test() {
+    ... 
+}</code></pre>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </section>
-        
-        <!-- Example Section -->
-        <section id="annotations-example" class="doc-section">
-            <h3>Exemplo Completo</h3>
-            <p>Veja como usar várias anotações juntas em uma classe de teste:</p>
-            
-            <div class="code-block">
-                <div class="code-header">
-                    <div class="code-dots">
-                        <div class="code-dot red"></div>
-                        <div class="code-dot yellow"></div>
-                        <div class="code-dot green"></div>
-                    </div>
-                    <div class="code-filename">user_service_test.dart</div>
-                </div>
-                <div class="code-content">
-                    <pre><code><span class="token annotation">@ClassTestable</span><span class="token punctuation">()</span>
-<span class="token keyword">class</span> <span class="token class-name">UserServiceTest</span> <span class="token punctuation">{</span>
-  <span class="token keyword">late</span> UserService userService<span class="token punctuation">;</span>
-  
-  <span class="token annotation">@BeforeEach</span><span class="token punctuation">()</span>
-  <span class="token keyword">void</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    userService <span class="token operator">=</span> <span class="token function">UserService</span><span class="token punctuation">(</span><span class="token function">MockUserRepository</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  
-  <span class="token annotation">@Test</span><span class="token punctuation">()</span>
-  <span class="token annotation">@DisplayName</span><span class="token punctuation">(</span>displayName<span class="token punctuation">:</span> <span class="token string">"Cria usuário com email válido"</span><span class="token punctuation">)</span>
-  <span class="token keyword">void</span> <span class="token function">testCreateUser_validEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">final</span> user <span class="token operator">=</span> userService<span class="token punctuation">.</span><span class="token function">createUser</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">expect</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>email<span class="token punctuation">,</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  
-  <span class="token annotation">@RepeatedTest</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span>
-  <span class="token keyword">void</span> <span class="token function">testCreateUser_randomEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">final</span> email <span class="token operator">=</span> <span class="token string">'test<span class="token interpolation"><span class="token punctuation">${</span><span class="token function">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>@example.com'</span><span class="token punctuation">;</span>
-    <span class="token keyword">final</span> user <span class="token operator">=</span> userService<span class="token punctuation">.</span><span class="token function">createUser</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">expect</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>email<span class="token punctuation">,</span> <span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">'@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  
-  <span class="token annotation">@AfterEach</span><span class="token punctuation">()</span>
-  <span class="token keyword">void</span> <span class="token function">tearDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    userService<span class="token punctuation">.</span><span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-                </div>
-            </div>
-        </section>
-        
+
         <!-- Assertions Section -->
-        <section id="assertions-overview" class="doc-section">
-            <h2>Asserções</h2>
+        <section id="asserts" class="doc-section">
+            <h2>✅ Asserts</h2>
             <p>O Petal Test fornece uma variedade de asserções para verificar seus resultados:</p>
             
             <h3>Asserções Básicas</h3>
             <div class="code-block">
                 <div class="code-content">
-                    <pre><code><span class="token comment">// Igualdade</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">equals</span><span class="token punctuation">(</span>expected<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isNot</span><span class="token punctuation">(</span>unexpected<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// Booleanos</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isTrue</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isFalse</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isNull</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">isNotNull</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// Números</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">greaterThan</span><span class="token punctuation">(</span>min<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">lessThan</span><span class="token punctuation">(</span>max<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> <span class="token function">inRange</span><span class="token punctuation">(</span>min<span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+                    <pre><code><span class="token function">expectThan</span><span class="token punctuation">(</span>value<span class="token punctuation">).</span><span class="token comment"> // Cria uma expectativa para o valor testado</span>
+    <span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment"> // Junta condições</span>
+    <span class="token function">or</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment"> // Desjunção de condições</span>
+    <span class="token function">toBe</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Compara igualdade primitiva</span>
+    <span class="token function">notToBe</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Compara diferença primitiva</span>
+    <span class="token function">toBeNull</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Verifica se é nulo</span>
+    <span class="token function">toBeNotNull</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Verifica se não é nulo</span>
+    <span class="token function">toEqual</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Compara objetos e arrays (deep equality)</span>
+    <span class="token function">toBeTrue</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Verifica se o valor é verdadeiro</span>
+    <span class="token function">toBeFalse</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Verifica se o valor é false</span>
+    <span class="token function">toBeGreaterThan</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Verifica se é maior que value</span>
+    <span class="token function">toBeGreaterThanOrEqualTo</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Verifica se é maior ou igual que value</span>
+    <span class="token function">toBeLessThan</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Verifica se é menor que value</span>
+    <span class="token function">toBeLessThanOrEqualTo</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Verifica se é menor ou igual que value</span>
+    <span class="token function">toBeBetweenTo</span><span class="token punctuation">(</span>x, y<span class="token punctuation">)</span><span class="token comment"> // Verifica se está dentro do intervalo</span></pre></code>
                 </div>
             </div>
-            
+            <h3>Asserções para Strings</h3>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code>
+<span class="token function">toContain</span><span class="token punctuation">(</span>substring<span class="token punctuation">)</span><span class="token comment"> // Verifica se contém a substring</span>
+<span class="token function">toStartWith</span><span class="token punctuation">(</span>prefix<span class="token punctuation">)</span><span class="token comment"> // Verifica prefixo</span>
+<span class="token function">toEndWith</span><span class="token punctuation">(</span>suffix<span class="token punctuation">)</span><span class="token comment"> // Verifica sufixo</span>
+<span class="token function">toMatch</span><span class="token punctuation">(</span>RegExp<span class="token punctuation">)</span><span class="token comment"> // Verifica se casa com regex</span>
+<span class="token function">toHaveLength</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token comment"> // Verifica o comprimento da string</span></pre></code>
+                </div>
+            </div>
             <h3>Asserções para Coleções</h3>
             <div class="code-block">
                 <div class="code-content">
-                    <pre><code><span class="token function">expect</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token function">contains</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token function">hasLength</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> <span class="token function">containsValue</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">expect</span><span class="token punctuation">(</span>list<span class="token punctuation">,</span> <span class="token function">isNotEmpty</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+                    <pre><code>
+<span class="token function">toContain</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment"> // Verifica se contém o valor</span>
+<span class="token function">toBeEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment"> // Verifica se está vazia</span>
+<span class="token function">toHaveLength</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token comment"> // Verifica o tamanho</span>
+<span class="token function">toContainAll</span><span class="token punctuation">(</span>[a, b]<span class="token punctuation">)</span><span class="token comment"> // Verifica se contém todos os elementos</span>
+<span class="token function">toContainExactly</span><span class="token punctuation">(</span>[a, b]<span class="token punctuation">)</span><span class="token comment"> // Verifica mesma ordem e elementos</span>
+<span class="token function">toContainAny</span><span class="token punctuation">(</span>[a, b]<span class="token punctuation">)</span><span class="token comment"> // Verifica se contém algum elemento</span></pre></code>
                 </div>
             </div>
+            <h3>Asserções para Exceções</h3>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code>
+<span class="token function">toThrow</span><span class="token punctuation">(</span>classException<span class="token punctuation">)</span><span class="token comment"> // Verifica se a função lança erro</span>
+<span class="token function">doesNotToThrow</span><span class="token punctuation">(</span>classException<span class="token punctuation">)</span><span class="token comment"> // Verifica se a função não lança erro</span>
+<span class="token function">toThrowWithMessage</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token comment"> // Verifica mensagem da exceção</span></pre></code>
+                </div>
+            </div>
+            <h3>Asserções Customizadas</h3>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code>
+<span class="token function">toHaveProperty</span><span class="token punctuation">(</span>'name', value<span class="token punctuation">)</span><span class="token comment"> // Verifica valor de um atributo</span>
+<span class="token function">toSatisfy</span><span class="token punctuation">(</span>predicate<span class="token punctuation">)</span><span class="token comment"> // Usa função customizada</span></pre></code>
+                </div>
+            </div>
+            <h3>Asserções para Datas</h3>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code>
+<span class="token function">toBeBefore</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token comment"> // Verifica se é antes da data</span>
+<span class="token function">toBeAfter</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token comment"> // Verifica se é depois da data</span>
+<span class="token function">toBeSameDayAs</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token comment"> // Verifica se é o mesmo dia</span>
+<span class="token function">toBeCloseTo</span><span class="token punctuation">(</span>date, delta<span class="token punctuation">)</span><span class="token comment"> // Verifica se está dentro do intervalo</span></pre></code>
+                </div>
+            </div>
+        </section>
+        <section id="cli" class="doc-section">
+            <h2>CLI command</h2>
+            
+        </section>
+        <section id="reports" class="doc-section">
+            <h2>Reports</h2>
+            
+        </section>
+        <section id="bdd" class="doc-section">
+            <h2>BDD</h2>
+            
         </section>
     </main>
 
