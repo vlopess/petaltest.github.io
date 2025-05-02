@@ -214,19 +214,14 @@
         }
 
         .product-image {
-            height: 250px;
-            background-color: var(--gray-50);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            height: 350px;
+            background-color: var(--gray-50);            
         }
-
+        
         .product-image img {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
+            width: 100%;
+            max-height: 100%;
+            object-fit: cover;
             transition: transform 0.3s;
         }
 
@@ -400,8 +395,8 @@
         }
 
         .cart-item-image {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background-color: var(--gray-50);
             border-radius: 4px;
             display: flex;
@@ -410,8 +405,9 @@
         }
 
         .cart-item-image img {
-            max-width: 70%;
-            max-height: 70%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
         }
 
         .cart-item-details {
@@ -634,14 +630,14 @@
             <button class="category-btn">Pins</button>
             <button class="category-btn">Bolsas</button>
             <button class="category-btn">Crochê</button>
-            <button class="category-btn">Camisa</button>
+            <button class="category-btn">Canecas</button>
         </div>
         
         <div class="products-grid">
             <!-- Product 1 -->
-            <div class="product-card" data-category="Pin">
+            <div class="product-card" data-category="Pins">
                 <div class="product-image">
-                    <img src="https://via.placeholder.com/300x300?text=Petal+Pin" alt="Pin Petal Test">
+                    <img src="./images/pins.png" alt="Pin Petal Test">
                     <span class="product-badge">Novo</span>
                 </div>
                 <div class="product-info">
@@ -656,9 +652,9 @@
             </div>
             
             <!-- Product 2 -->
-            <div class="product-card" data-category="Bolsa">
+            <div class="product-card" data-category="Bolsas">
                 <div class="product-image">
-                    <img src="https://via.placeholder.com/300x300?text=Ecobag+Petal" alt="Ecobag Petal Test">
+                    <img src="./images/ecobag.png" alt="Ecobag Petal Test">
                 </div>
                 <div class="product-info">
                     <div class="product-category">Bolsa</div>
@@ -672,16 +668,16 @@
             </div>
             
             <!-- Product 3 -->
-            <div class="product-card" data-category="Crochê">
+            <div class="product-card" data-category="Bolsas, Crochê">
                 <div class="product-image">
-                    <img src="https://via.placeholder.com/300x300?text=Amigurumi+Dart" alt="Amigurumi Dart">
+                    <img src="./images/ecobagcroche.png" alt="Ecobag Croche">
                     <span class="product-badge">Mais Vendido</span>
                 </div>
                 <div class="product-info">
-                    <div class="product-category">Crochê</div>
-                    <h3 class="product-title">Amigurumi Logo Dart</h3>
-                    <p class="product-description">Boneco de crochê do mascote Dart, feito à mão com fio 100% algodão.</p>
-                    <div class="product-price">R$ 79,90</div>
+                    <div class="product-category">Bolsa</div>
+                    <h3 class="product-title">Ecobag Petal Test Crochê</h3>
+                    <p class="product-description">Bolsa ecológica com estampa do logo feita de crochê</p>
+                    <div class="product-price">R$ 49,90</div>
                     <div class="product-actions">
                         <button class="add-to-cart">Adicionar</button>
                     </div>
@@ -691,13 +687,13 @@
             <!-- Product 4 -->
             <div class="product-card" data-category="Acessórios">
                 <div class="product-image">
-                    <img src="https://via.placeholder.com/300x300?text=Chaveiro+Petal" alt="Chaveiro Petal">
+                    <img src="./images/chaveiro.png" alt="Chaveiro Petal">
                 </div>
                 <div class="product-info">
                     <div class="product-category">Acessórios</div>
                     <h3 class="product-title">Chaveiro Margarida</h3>
                     <p class="product-description">Chaveiro em metal com design da margarida, símbolo do Petal Test.</p>
-                    <div class="product-price">R$ 14,90</div>
+                    <div class="product-price">R$ 9,90</div>
                     <div class="product-actions">
                         <button class="add-to-cart">Adicionar</button>
                     </div>
@@ -707,14 +703,14 @@
             <!-- Product 5 -->
             <div class="product-card" data-category="Canecas">
                 <div class="product-image">
-                    <img src="https://via.placeholder.com/300x300?text=Caneca+Petal" alt="Caneca Petal">
-                    <span class="product-badge">Promoção</span>
+                    <img src="./images/caneca.png" alt="Caneca Petal">
+                    <!-- <span class="product-badge">Promoção</span> -->
                 </div>
                 <div class="product-info">
                     <div class="product-category">Canecas</div>
-                    <h3 class="product-title">Caneca Testes Perfeitos</h3>
-                    <p class="product-description">Caneca de cerâmica com frase "Testes Perfeitos" e logo estilizado.</p>
-                    <div class="product-price">R$ 39,90 <span class="original">R$ 49,90</span></div>
+                    <h3 class="product-title">Caneca Petal Test</h3>
+                    <p class="product-description">Caneca de cerâmica do Petal Test e logo estilizado.</p>
+                    <div class="product-price">R$ 39,90</div>
                     <div class="product-actions">
                         <button class="add-to-cart">Adicionar</button>
                     </div>
@@ -722,15 +718,15 @@
             </div>
             
             <!-- Product 6 -->
-            <div class="product-card" data-category="Crochê">
+            <div class="product-card" data-category="Canecas">
                 <div class="product-image">
-                    <img src="https://via.placeholder.com/300x300?text=Kit+Croche" alt="Kit Crochê">
+                    <img src="./images/canecatdd.png" alt="Kit Crochê">
                 </div>
                 <div class="product-info">
-                    <div class="product-category">Crochê</div>
-                    <h3 class="product-title">Kit Aprendendo Crochê</h3>
-                    <p class="product-description">Kit completo para iniciantes em crochê com padrão da margarida.</p>
-                    <div class="product-price">R$ 129,90</div>
+                    <div class="product-category">Canecas</div>
+                    <h3 class="product-title">Caneca TDD</h3>
+                    <p class="product-description">Caneca de cerâmica do TDD (Teste depois do deploy).</p>
+                    <div class="product-price">R$ 39,90</div>
                     <div class="product-actions">
                         <button class="add-to-cart">Adicionar</button>
                     </div>
@@ -799,43 +795,43 @@
             {
                 id: 1,
                 name: 'Pin Margarida Petal',
-                price: 24.90,
-                image: 'https://via.placeholder.com/150?text=Petal+Pin',
+                price: 4.90,
+                image: './images/pins.png',
                 category: 'Pin'
             },
             {
                 id: 2,
                 name: 'Ecobag Petal Test',
-                price: 49.90,
-                image: 'https://via.placeholder.com/150?text=Ecobag+Petal',
+                price: 39.90,
+                image: './images/ecobag.png',
                 category: 'Bolsa'
             },
             {
                 id: 3,
-                name: 'Amigurumi Logo Dart',
-                price: 89.90,
-                image: 'https://via.placeholder.com/150?text=Amigurumi+Dart',
+                name: 'Ecobag Petal Test Crochê',
+                price: 49.90,
+                image: './images/ecobagcroche.png',
                 category: 'Crochê'
             },
             {
                 id: 4,
                 name: 'Chaveiro Margarida',
-                price: 19.90,
-                image: 'https://via.placeholder.com/150?text=Chaveiro+Petal',
+                price: 9.90,
+                image: './images/chaveiro.png',
                 category: 'Acessórios'
             },
             {
                 id: 5,
-                name: 'Caneca Testes Perfeitos',
+                name: 'Caneca Petal Test',
                 price: 39.90,
-                image: 'https://via.placeholder.com/150?text=Caneca+Petal',
+                image: './images/caneca.png',
                 category: 'Canecas'
             },
             {
                 id: 6,
-                name: 'Kit Aprendendo Crochê',
-                price: 129.90,
-                image: 'https://via.placeholder.com/150?text=Kit+Croche',
+                name: 'Caneca TDD',
+                price: 39.90,
+                image: './images/canecatdd.png',
                 category: 'Crochê'
             }
         ];
@@ -991,7 +987,6 @@
         
         // Finalizar compra
         document.querySelector('.checkout-btn').addEventListener('click', () => {
-            alert('Compra finalizada! Obrigado por sua compra.');
             cart = [];
             updateCart();
             closeCart();
@@ -1004,19 +999,22 @@
                 btn.classList.add('active');
                 const category = btn.textContent.trim();
                 var allProducts = document.getElementsByClassName('products-grid');
+                
                 if (category === 'Todos') {
-                    allProducts.forEach(product => {
+                    for (let index = 0; index < allProducts[0].children.length; index++) {
+                        const product = allProducts[0].children[index];
                         product.style.display = 'grid';
-                    });
+                    }
                 } else {
-                    allProducts[0].children.forEach(product => {
+                    for (let index = 0; index < allProducts[0].children.length; index++) {
+                        const product = allProducts[0].children[index];
                         const productCategory = product.dataset.category;
-                        if (productCategory === category) {
+                        if (productCategory.includes(category)) {
                             product.style.display = 'grid';
                         } else {
                             product.style.display = 'none';
-                        }
-                    });
+                        }                        
+                    }
                 }
             });
         });
