@@ -547,7 +547,7 @@ pre {
 /* Responsive */
 @media (max-width: 1024px) {
   .hero img {
-      height: 70%;
+      height: 50%;
   }
 }
 @media (max-width: 768px) {
